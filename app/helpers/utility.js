@@ -2,7 +2,8 @@ const jwt = require("jsonwebtoken");
 
 const getOTP = () => {
 
-    const otp = Math.floor(Math.random() * 10000).toString();
+    // const otp = Math.floor(Math.random() * 10000).toString();
+    const otp = "1234";
     if (otp.length > 3) {
         return otp;
     } else {

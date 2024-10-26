@@ -1,0 +1,15 @@
+# Ignore all build files and directories
+build/
+storages/
+
+# Ignore node_modules
+node_modules/
+
+# Ignore specific files
+package-lock.json
+
+# Ignore specific file types in a folder
+# src/**/*.test.js
+
+# Ignore all files in a specific directory
+# public/assets/*

@@ -115,11 +115,11 @@ module.exports = {
 
             console.log("result", result)
             // send otp
-            const sendSmsResult = await otpSender(phone, otp)
-            if (sendSmsResult) {
+            // const sendSmsResult = await otpSender(phone, otp)
+            // if (sendSmsResult) {
 
-                console.log("Otp sender message------------>", sendSmsResult.message)
-            }
+            //     console.log("Otp sender message------------>", sendSmsResult.message)
+            // }
 
             native.response(
                 {

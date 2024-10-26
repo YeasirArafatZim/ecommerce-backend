@@ -32,7 +32,6 @@ app.use((req, res, next) => {
 //database connection with mongoose
 mongoose.set("strictQuery", true);
 let dbURL = `${process.env.DB_URL}`;
-console.log(dbURL);
 mongoose.connect(dbURL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -40,7 +39,7 @@ mongoose.connect(dbURL, {
 
 const db = mongoose.connection;
 db.on("error", (error) => console.log(error));
-db.once("open", () => console.log("MongoDB connect success"));
+db.once("open", () => console.log("MongoDB successfully connected"));
 
 app.use("/api/v1", require("./routes/api"));
 app.get("/", (req, res) => {

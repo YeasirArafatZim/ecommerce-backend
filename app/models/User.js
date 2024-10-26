@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const AutoIncrement = require("mongoose-sequence")(mongoose);
+// const AutoIncrement = require("mongoose-sequence")(mongoose);
 
 const field = {
   name: {
@@ -66,6 +66,6 @@ const field = {
 
 const appUserSchema = mongoose.Schema(field, { timestamps: true });
 
-appUserSchema.plugin(AutoIncrement, { inc_field: "serialNumber" });
+// appUserSchema.plugin(AutoIncrement, { inc_field: "serialNumber" });
 
 module.exports = mongoose.model("User", appUserSchema);

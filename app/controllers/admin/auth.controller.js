@@ -18,7 +18,7 @@ const User = require("../../models/User");
 module.exports = {
     createAdminHandler: async (req, res) => {
         let query = {};
-        try {
+        try {  
             const { email, password, name, phone } = req.body;
 
             //  @validation part

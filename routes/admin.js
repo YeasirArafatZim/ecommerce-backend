@@ -5,13 +5,14 @@ const path = require("path");
 const fs = require("fs");
 
 const adminAuthController = require("../app/controllers/admin/auth.controller");
+const categoryController = require("../app/controllers/admin/category.controller");
 const userManageController = require("../app/controllers/admin/user.manage.controller");
-const multerMiddleware = multer().any()
-
+const multerMiddleware = multer().any();
 
 // File upload folder
-const UPLOADS_FOLDER = `./${process.env.UPLOADS_FOLDER ? process.env.UPLOADS_FOLDER : "storage"
-  }`;
+const UPLOADS_FOLDER = `./${
+  process.env.UPLOADS_FOLDER ? process.env.UPLOADS_FOLDER : "storage"
+}`;
 // console.log(UPLOADS_FOLDER);
 // define the storage
 const storage = multer.diskStorage({
@@ -62,7 +63,7 @@ const upload = multer({
 });
 
 router.get("/", (req, res) => {
-  console.log(req.nativeRequest)
+  console.log(req.nativeRequest);
   res.send("Hello Admin!");
 });
 
@@ -70,13 +71,22 @@ router.get("/", (req, res) => {
 router.post("/create", adminAuthController.createAdminHandler);
 router.post("/login", adminAuthController.loginHandler);
 
-router.get("/users", userManageController.getUsersHandler)
+// Category
+router.post(
+  "/category",
+  upload.single("banner"),
+  categoryController.createCategory
+);
+router.get("/category/tree", categoryController.getCategoryTree);
 
-router.post("/cms", upload.single("banner"), userManageController.postCMSHandler)
-router.get("/cms", userManageController.getCMSHandler)
+// User
+router.get("/users", userManageController.getUsersHandler);
 
-
-
-
+router.post(
+  "/cms",
+  upload.single("banner"),
+  userManageController.postCMSHandler
+);
+router.get("/cms", userManageController.getCMSHandler);
 
 module.exports = router;

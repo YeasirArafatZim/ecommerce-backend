@@ -1,9 +1,9 @@
-const CMS = require("../models/CMS");
+const Category = require("../models/Category");
 
 module.exports = {
   create: async (data) => {
     try {
-      const result = await CMS.create(data);
+      const result = await Category.create(data);
 
       return result;
     } catch (error) {
@@ -12,7 +12,7 @@ module.exports = {
   },
   find: async (query) => {
     try {
-      const result = await CMS.findOne(query);
+      const result = await Category.findOne(query);
 
       return result;
     } catch (error) {
@@ -27,7 +27,7 @@ module.exports = {
     sort = {}
   ) => {
     try {
-      const result = await CMS.find(query, filter)
+      const result = await Category.find(query, filter)
         .skip(startIndex)
         .limit(limit)
         .sort(sort);
@@ -40,7 +40,7 @@ module.exports = {
   },
   update: async (query, updateData) => {
     try {
-      const result = await CMS.findOneAndUpdate(query, updateData, {
+      const result = await Category.findOneAndUpdate(query, updateData, {
         new: true,
       });
 
@@ -52,7 +52,7 @@ module.exports = {
   },
   deleteOne: async (query) => {
     try {
-      const result = await CMS.deleteOne(query);
+      const result = await Category.deleteOne(query);
       return result;
     } catch (error) {
       console.log(error);
@@ -62,7 +62,7 @@ module.exports = {
 
   deleteMany: async (query) => {
     try {
-      const result = await CMS.deleteMany(query);
+      const result = await Category.deleteMany(query);
       console.log("delete item :", result);
       return result;
     } catch (error) {
@@ -72,7 +72,7 @@ module.exports = {
   },
   totalCount: async (query) => {
     try {
-      const result = await CMS.find(query).count();
+      const result = await Category.find(query).count();
 
       return result;
     } catch (error) {
